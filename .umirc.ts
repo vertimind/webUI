@@ -4,6 +4,7 @@ import { defineConfig } from 'umi';
 import { appName } from './src/conf.json';
 import routes from './src/routes';
 
+const Authorization = process.env.Authorization || '';
 export default defineConfig({
   title: appName,
   outputPath: 'dist',
@@ -44,7 +45,7 @@ export default defineConfig({
       logger: console,
       // pathRewrite: { '^/v1': '/v1' },
       onProxyReq: (proxyReq, req) => {
-        proxyReq.setHeader('Cookie', 'proxy_sso_auth=c92efe1f439b0b884994aaec13f37304; proxy_sso_token=1147195e-a6f5-436c-92d4-5073f264654a; proxy_sso_referer=https://www.cfgpu.com');
+        proxyReq.setHeader('CFGPU-Authorization', Authorization);
       },
     },
   ],

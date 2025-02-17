@@ -9,7 +9,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
+    env:  # 添加环境变量
+        Authorization: ${{ secrets.DEPLOY_Authorization }}  # 使用 GitHub Secrets 设置环境变量
+        
     steps:
       - uses: actions/checkout@v4
 
